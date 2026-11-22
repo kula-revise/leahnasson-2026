@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leah Nasson · Learning experience design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Inter:wght@400;500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F1EC;
+  --paper-2:#FBFAF7;
+  --ink:#18181D;
+  --ink-soft:#54545C;
+  --ink-mute:#8C8C94;
+  --rule:rgba(20,20,26,.12);
+  --accent:#BC5327;
+
+  --disp:"Gowun Batang",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,monospace;
+}
+:root[data-theme="dark"]{
+  --paper:#101216;
+  --paper-2:#191B21;
+  --ink:#ECE8DE;
+  --ink-soft:#A9ABB4;
+  --ink-mute:#6E7079;
+  --rule:rgba(236,232,222,.14);
+  --accent:#E0763B;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  transition:background-color .3s ease,color .3s ease;
+  font-family:var(--sans);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 26px;}
+a{color:inherit;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+}
+
+/* hero */
+.hero{
+  padding:76px 0 40px;
+  display:grid;
+  grid-template-columns:1fr minmax(260px,340px);
+  gap:52px;
+  align-items:center;
+}
+.ident .nm{
+  display:block;font-family:var(--mono);font-size:.74rem;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--ink);font-weight:500;
+}
+.ident .rl{
+  display:block;margin-top:7px;font-family:var(--mono);font-size:.67rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.hero h1{
+  font-family:var(--disp);
+  font-weight:700;
+  font-size:clamp(2.05rem,5.4vw,2.95rem);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  margin:26px 0 18px;
+}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero .lede{
+  font-size:1.02rem;color:var(--ink-soft);max-width:44ch;line-height:1.58;
+}
+.cvlink{
+  display:inline-flex;align-items:center;gap:.42em;margin-top:24px;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+  color:var(--ink);text-decoration:none;padding-bottom:2px;
+  border-bottom:1px solid var(--rule);transition:border-color .2s,color .2s;
+}
+.cvlink .arw{color:var(--accent);transition:transform .2s;}
+.cvlink:hover{color:var(--accent);border-color:var(--accent);}
+.cvlink:hover .arw{transform:translate(2px,-2px);}
+
+/* illustration */
+.art{width:100%;height:auto;display:block;overflow:visible;}
+.art .line{fill:none;stroke:var(--ink);stroke-width:1.4;opacity:.2;stroke-linecap:round;}
+.art .line.hot{stroke:var(--accent);opacity:.85;stroke-width:1.8;}
+.art .ring{fill:none;stroke:var(--ink);stroke-width:1.2;opacity:.1;}
+.art .node{fill:var(--ink);opacity:.45;}
+.art .node.hot{fill:var(--accent);opacity:1;}
+.art .origin{fill:var(--accent);}
+
+/* i-model */
+.model{padding:30px 0;border-top:1px solid var(--rule);}
+.model .eyebrow{display:block;margin-bottom:14px;}
+.model p{font-size:1.05rem;line-height:1.6;max-width:60ch;}
+.model p b{font-family:var(--disp);font-weight:700;font-style:normal;}
+.model .explainer{
+  display:inline-flex;align-items:center;gap:.42em;margin-top:18px;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+  color:var(--ink);text-decoration:none;padding-bottom:2px;
+  border-bottom:1px solid var(--rule);transition:border-color .2s,color .2s;
+}
+.model .explainer .arw{color:var(--accent);transition:transform .2s;}
+.model .explainer:hover{color:var(--accent);border-color:var(--accent);}
+.model .explainer:hover .arw{transform:translate(2px,-2px);}
+
+/* work list */
+.work{padding:30px 0 20px;border-top:1px solid var(--rule);}
+.work > .eyebrow{display:block;margin-bottom:6px;}
+.row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:28px;
+  padding:22px 0;border-top:1px solid var(--rule);
+}
+.row:first-of-type{border-top:0;}
+.r-main{min-width:0;}
+.row h3{
+  font-family:var(--disp);font-weight:700;font-size:1.3rem;
+  letter-spacing:0;line-height:1.2;margin-bottom:5px;
+}
+.row .desc{color:var(--ink-soft);font-size:.97rem;line-height:1.45;}
+.row .why{margin-top:10px;color:var(--ink-mute);font-size:.9rem;line-height:1.52;max-width:56ch;}
+.r-links{flex-shrink:0;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:flex-end;}
+.r-links a{
+  display:inline-flex;align-items:center;gap:.4em;white-space:nowrap;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;
+  color:var(--ink);text-decoration:none;padding-bottom:2px;
+  border-bottom:1px solid var(--rule);transition:border-color .2s,color .2s;
+}
+.r-links a .arw{color:var(--accent);transition:transform .2s;}
+.r-links a:hover{color:var(--accent);border-color:var(--accent);}
+.r-links a:hover .arw{transform:translate(2px,-2px);}
+
+/* stacked variant: links drop below the text, full width */
+.row.row-stack{flex-direction:column;align-items:stretch;gap:14px;}
+.row.row-stack .r-links{justify-content:flex-start;}
+
+/* close */
+.close{padding:34px 0 70px;border-top:1px solid var(--rule);margin-top:26px;}
+.close .sign{
+  font-family:var(--disp);font-weight:600;font-size:1.15rem;
+  color:var(--ink);line-height:1.4;max-width:34ch;margin-bottom:18px;
+}
+.close .close-note{font-size:1rem;color:var(--ink-soft);line-height:1.5;max-width:48ch;}
+.close .who{
+  margin-top:22px;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mute);
+}
+.close .who b{color:var(--ink-soft);font-weight:500;}
+.close .contact{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:16px;}
+.close .contact a{
+  display:inline-flex;align-items:center;gap:.42em;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;
+  color:var(--ink);text-decoration:none;padding-bottom:2px;
+  border-bottom:1px solid var(--rule);transition:border-color .2s,color .2s;
+}
+.close .contact a .arw{color:var(--accent);transition:transform .2s;}
+.close .contact a:hover{color:var(--accent);border-color:var(--accent);}
+.close .contact a:hover .arw{transform:translate(2px,-2px);}
+
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;gap:8px;padding:52px 0 32px;}
+  .hero .art-wrap{max-width:300px;margin-top:26px;}
+}
+@media (max-width:560px){
+  .wrap{padding:0 22px;}
+  .row{flex-direction:column;gap:12px;}
+  .r-links{justify-content:flex-start;}
+}
+
+.theme-toggle{
+  position:fixed;top:18px;right:18px;
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--rule);background:var(--paper);color:var(--ink);
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  z-index:30;transition:border-color .2s,color .2s,background-color .3s;
+}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.theme-toggle svg{width:18px;height:18px;}
+.theme-toggle .ic-sun{display:none;}
+:root[data-theme="dark"] .theme-toggle .ic-sun{display:block;}
+:root[data-theme="dark"] .theme-toggle .ic-moon{display:none;}
+</style>
+<script>
+(function(){try{var m=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',m?'dark':'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();
+</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme">
+  <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6 6 0 0 0 10.5 10.5z"/></svg>
+  <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+</button>
+<main class="wrap">
+<main class="wrap">
+
+  <header class="hero">
+    <div class="hero-text">
+      <div class="ident">
+        <span class="nm">Leah Nasson</span>
+        <span class="rl">Co-founder &amp; Chief Learning Officer, Kula Learn</span>
+        <span class="rl">Head of Learning and Curriculum Design, Students for a Better Future</span>
+      </div>
+      <h1>Learning young people <em>play, not scroll past.</em></h1>
+      <p class="lede">Close to twenty years in education, from the classroom to curriculum leadership to co-founding Kula Learn. Today I design for teenagers and young adults on their phones, where attention is earned one screen at a time. I start from what the learner has to be able to do, make them act before they are told, and use what they actually do to make the next version better. And I build it all myself: the concept, the learning design, the brief and the finished experience.</p>
+    </div>
+    <div class="art-wrap">
+      <svg class="art" viewBox="0 0 420 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle class="ring" cx="140" cy="250" r="150"/>
+        <circle class="ring" cx="300" cy="300" r="92"/>
+        <path class="line hot" d="M70,320 C170,280 280,150 405,110"/>
+        <path class="line" d="M70,320 C180,315 300,225 408,185"/>
+        <path class="line" d="M70,320 C190,345 310,285 404,278"/>
+        <path class="line" d="M70,320 C180,375 300,368 408,368"/>
+        <path class="line hot" d="M70,320 C160,405 280,450 398,458"/>
+        <circle class="node hot" cx="405" cy="110" r="5.5"/>
+        <circle class="node" cx="408" cy="185" r="4.5"/>
+        <circle class="node" cx="404" cy="278" r="4.5"/>
+        <circle class="node" cx="408" cy="368" r="4.5"/>
+        <circle class="node hot" cx="398" cy="458" r="5.5"/>
+        <circle class="origin" cx="70" cy="320" r="6.5"/>
+      </svg>
+    </div>
+  </header>
+
+  <section class="work">
+    <span class="eyebrow">Selected work</span>
+
+    <div class="row">
+      <div class="r-main">
+        <h3>Kula Learn</h3>
+        <div class="desc">The AI-first learning platform I co-founded. I am the pedagogical mind behind it.</div>
+        <div class="why">Most AI in education is a content chatbot, delivering material and measuring completion. I set the learning design every Kula experience is built on: how a skill is broken down, when support is given and when it is taken away, and what counts as mastery. I work alongside the product team so new features are shaped by how learners actually use them.</div>
+      </div>
+      <div class="r-links">
+        <a href="https://www.kulalearn.com" target="_blank" rel="noopener noreferrer">Site <span class="arw">&#8599;</span></a>
+      </div>
+    </div>
+    <div class="row row-stack">
+      <div class="r-main">
+        <h3>Kula Revise</h3>
+        <div class="desc">Exam revision for teenagers, spanning CAPS, IEB, A level and IB. I am the pedagogical mind behind it, and I build all the material on it myself.</div>
+        <div class="why">First-rate exam preparation usually means a private tutor most families cannot afford. Kula Revise works on any phone. Timers set the pace without penalising, a skills guide sits behind every question, and a score of 70% unlocks a bonus round where the learner marks an answer as an examiner would.</div>
+        <div class="why" style="margin-top:8px;"><b style="font-family:var(--disp);font-weight:700;">Demo login</b> &nbsp;leah@kulalearn.com &nbsp;·&nbsp; Demo1234!!</div>
+      </div>
+      <div class="r-links">
+        <a href="https://revise.kulalearn.com/login" target="_blank" rel="noopener noreferrer">Log in to Kula Revise <span class="arw">&#8599;</span></a>
+        <a href="https://nsc-2025-j4i7.vercel.app/" target="_blank" rel="noopener noreferrer">Past paper <span class="arw">&#8599;</span></a>
+        <a href="https://berlinhook.vercel.app/" target="_blank" rel="noopener noreferrer">The Wire <span class="arw">&#8599;</span></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="r-main">
+        <h3>Women and war: build the essay</h3>
+        <div class="desc">An IB History Paper 2 essay workshop on women in the First World War and the Spanish Civil War, with an AI coach built in.</div>
+        <div class="why">Students revise the history and the historians, match four themes to their evidence, settle on a thesis and plan every paragraph before they write. An AI coach answers questions and reviews each paragraph before they move on, so feedback arrives while the essay can still change, not after it is marked. The finished essay goes straight to their teacher.</div>
+      </div>
+      <div class="r-links">
+        <a href="https://womenandwar.vercel.app/" target="_blank" rel="noopener noreferrer">Open <span class="arw">&#8599;</span></a>
+      </div>
+    </div>
+
+    <div class="row row-stack">
+      <div class="r-main">
+        <h3>The Edge</h3>
+        <div class="desc">A five-year skills programme for scholarship students aged 13 to 18, designed and built solo for Students for a Better Future.</div>
+        <div class="why">Scholarship programmes fund access but rarely build the person behind the marks. The Edge runs from Grade 8 to Grade 12 in five stages, Discover, Direct, Own, Lead and Be Ready, across leadership and wellbeing, the future world of work, and study skills. It is 66 courses rolling out in eight stages, all built to one standard so a scholar always knows how the next course will work. I review scholar results across 14 schools every term to decide what changes next, and I am now designing a rewards programme that turns activity on the platform into points.</div>
+        <div class="why" style="margin-top:8px;"><b style="font-family:var(--disp);font-weight:700;">Demo login</b> &nbsp;leah@kulalearn.com &nbsp;·&nbsp; Demo1234!!</div>
+      </div>
+      <div class="r-links">
+        <a href="https://sbf.kulalearn.com/login" target="_blank" rel="noopener noreferrer">Log in to The Edge <span class="arw">&#8599;</span></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="r-main">
+        <h3>The Vault</h3>
+        <div class="desc">A 90-second climate decision: you sit on South Africa's Presidential Climate Commission with R1.5 trillion to split across six sectors.</div>
+        <div class="why">Most climate learning asks young people to agree that the transition matters. This asks them to pay for it. You explore what is at stake in each sector, drag the budget until it adds up, then see how close you came to the experts. There is no right answer, only a score and a reminder that every number you moved is someone's job. Three decisions, one budget, built for a phone.</div>
+      </div>
+      <div class="r-links">
+        <a href="https://the-vault-rust.vercel.app/" target="_blank" rel="noopener noreferrer">Open <span class="arw">&#8599;</span></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="r-main">
+        <h3>The Boardroom</h3>
+        <div class="desc">It is 2035 and you run a green hydrogen start-up with fourteen people and six months of money left. Five decisions, five leadership skills.</div>
+        <div class="why">Entrepreneurship and climate in one story. Each decision plays differently: you dig into the data before a call, hear how your funder, engineer and a community leader react to your choice, rank three moves in order, and take a breath before the hardest month. Every decision ends by naming the skill it tested. At the end you choose the one that felt hardest, and that becomes your growing edge, so the learner names their own next step instead of being handed a score.</div>
+      </div>
+      <div class="r-links">
+        <a href="https://the-boardroom-two.vercel.app/" target="_blank" rel="noopener noreferrer">Open <span class="arw">&#8599;</span></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="r-main">
+        <h3>15 Seconds</h3>
+        <div class="desc">A three-minute opener for a course on regulating emotions, built for teenagers.</div>
+        <div class="why">Telling a fifteen-year-old about fight, flight, freeze and fawn rarely lands. This puts them in four moments they know: a test section they never studied, a private message screenshotted into the group chat, a group mark they carried alone, a missed bus with R15 and 4% battery. The clock shrinks each round from fifteen seconds to six, and running out of time counts as freezing. By the end they have felt all four responses, and learn that every one was valid before the course has taught them a thing.</div>
+      </div>
+      <div class="r-links">
+        <a href="https://flight-fight-fawn.vercel.app/" target="_blank" rel="noopener noreferrer">Open <span class="arw">&#8599;</span></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="r-main">
+        <h3>Leading with Influence</h3>
+        <div class="desc">A simulation game about getting things done through people who don't report to you.</div>
+        <div class="why">Six weeks, four people, six moves. Each person responds to a different approach, drawn from Goleman's six leadership styles, and what works on one is actively damaging to another. It never tells you your style. It shows you what happened to four people and lets you draw the conclusion.</div>
+      </div>
+      <div class="r-links">
+        <a href="https://leading-with-influence.vercel.app/" target="_blank" rel="noopener noreferrer">Open <span class="arw">&#8599;</span></a>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="close">
+    <p class="close-note">This is a selection of my work. For a demo or more examples, get in touch.</p>
+    <div class="contact">
+      <a href="mailto:leah.nasson@gmail.com">leah.nasson@gmail.com <span class="arw">&#8599;</span></a>
+      <a href="https://www.linkedin.com/in/leah-nasson" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arw">&#8599;</span></a>
+    </div>
+    <div class="who"><b>Leah Nasson</b> &nbsp;·&nbsp; Cape Town</div>
+  </footer>
+
+</main>
+<script>
+(function(){var d=document.documentElement,b=document.getElementById('themeToggle');if(!b)return;b.addEventListener('click',function(){d.setAttribute('data-theme',d.getAttribute('data-theme')==='dark'?'light':'dark');});})();
+</script>
+</body>
+</html>
